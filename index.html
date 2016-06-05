@@ -54,8 +54,11 @@
       function take_snapshot() {
           Webcam.snap( function(data_uri) {
               Webcam.upload( data_uri, 'https://api.projectoxford.ai/emotion/v1.0/recognize', function(code, text) {
-                  window.alert(code);
-                  window.alert(text);
+                  var response = JSON.parse(text);
+				  var anger = response[0].scores.anger;
+				  var fear = response[0].scores.fear;
+				  var happiness = response[0].scores.happiness;
+				  var surprise = response[0].scores.surprise;
               } );
           } );
       }
