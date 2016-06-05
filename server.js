@@ -10,9 +10,19 @@ app.get('/', function(req, res){
 app.use(express.static('Scripts'));
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('chat message', function(msg, username){
+    io.emit('chat message', msg, username);
   });
+
+
+  socket.on('new message', function (data) {
+    // we tell the client to execute 'new message'
+    socket.broadcast.emit('new message', {
+      username: socket.username,
+      message: data
+    });
+  });
+
 });
 
 http.listen(3000, function(){
