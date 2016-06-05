@@ -1,14 +1,21 @@
+var util = require("util");
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var port = process.env.PORT || 80;
 var azure = require('azure-storage');
 var blobSvc = azure.createBlobService();
+
 
 blobSvc.createBlockBlobFromLocalFile('awkwardcontainer', 'testblob', 'happy.jpg', function(error, result, response){
   if(!error){
      //file uploaded
   }
+});
+
+http.listen(port, function(){
+  console.log('listening on *:3000');
 });
 
 app.get('/', function(req, res){	
@@ -31,8 +38,4 @@ io.on('connection', function(socket){
     });
   });
 
-});
-
-http.listen(3000, function(){
-  console.log('listening on *:3000');
 });

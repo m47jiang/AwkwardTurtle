@@ -37,6 +37,7 @@ var awkwardWords = [{
     }
 ];
 
+
 var socket = io();
 var color = prompt("Color");
 var userName = '<span ' + 'style="color:' + color +';"'+ '>'+ prompt("Your Nickname:") + ':</span>';
