@@ -24,13 +24,13 @@
           <div class="well">
               <ul class="nav text-center">
                   <li class="nav-header"><h2>Awkwardness Meter</h2></li>
-                  <li><p id="vawk">Very awkward</p>
+                  <li><p class="awks" id="vawk">Very awkward</p>
                   </li>
-                  <li><p id="awk">Awkard</p>
+                  <li><p class="awks" id="awk">Awkard</p>
                   </li>
-                  <li><p id="alawk">A little awkward</p>
+                  <li><p class="awks" id="alawk">A little awkward</p>
                   </li>
-                  <li><p id="nawk">Not awkward</p>
+                  <li><p class="awks" id="nawk">Not awkward</p>
                   </li>
               </ul>
           </div>
@@ -80,6 +80,24 @@
 				  document.getElementById("anger").innerHTML = ("Anger: " + anger);
 				  document.getElementById("happiness").innerHTML = ("Happiness: " + happiness);
 				  document.getElementById("surprise").innerHTML = ("Surprise: " + surprise);
+				  
+				  $(".awks").css("color","black");
+				  if((response[0].scores.anger * 100)+(response[0].scores.happiness * 100)+(response[0].scores.surprise * 100) < 50)
+				  {
+					$("#nawk").css("color","green");
+				  }
+				  else if((response[0].scores.anger * 100)+(response[0].scores.happiness * 100)+(response[0].scores.surprise * 100) < 100)
+				  {
+					$("#alawk").css("color","yellow");
+				  }
+				  else if((response[0].scores.anger * 100)+(response[0].scores.happiness * 100)+(response[0].scores.surprise * 100) < 150)
+				  {
+					$("#awk").css("color","orange");
+				  }
+				  else
+				  {
+					$("#vawk").css("color","red");
+				  }
               } );
           } );
       }
