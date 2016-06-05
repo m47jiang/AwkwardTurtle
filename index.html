@@ -13,6 +13,7 @@
       #messages { list-style-type: none; margin: 100px; padding: 100px; }
       #messages li { padding: 50px 100px; }
       #messages li:nth-child(odd) { background: #eee; }
+	  #my_camera { position:fixed; right: 0; }
     </style>
   </head>
   <body>
@@ -29,11 +30,11 @@
             } );
         }
     </script>
-    <a href="javascript:void(take_snapshot())">Take Snapshot</a>
 	
     <ul id="messages"></ul>
     <form action="" class = "footer">
-      <input id="m" autocomplete="off" /><button class="btn btn-primary">Send</button>
+      <input id="m" autocomplete="off" />
+	  <button class="btn btn-primary" onClick="take_snapshot()">Send</button>
     </form>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
