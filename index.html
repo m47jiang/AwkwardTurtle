@@ -13,13 +13,17 @@
       #messages { list-style-type: none; margin: 100px; padding: 100px; }
       #messages li { padding: 50px 100px; }
       #messages li:nth-child(odd) { background: #eee; }
-	  #my_camera { position:fixed; right: 0; }
+	  #my_camera { position:fixed; top: 0; right: 0; width:320px; height:240px;}
+	  #progress_bar { position:absolute; top:240px; right:0; width:320px; height:100%; background: rgb(0, 255, 0);}
     </style>
   </head>
   <body>
-  
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="chatRoom.js"></script>
 	<script src="webcam.js"></script>
-    <div id="my_camera" style="width:320px; height:240px;"></div>
+    <div id="my_camera" ></div>
+	<div id="progress_bar" ></div>
     <div id="my_result"></div>
     <script language="JavaScript">
         Webcam.attach( '#my_camera' );
@@ -36,8 +40,5 @@
       <input id="m" autocomplete="off" />
 	  <button class="btn btn-primary" onClick="take_snapshot()">Send</button>
     </form>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="chatRoom.js"></script>
   </body>
 </html>
