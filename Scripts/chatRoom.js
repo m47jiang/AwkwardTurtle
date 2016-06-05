@@ -1,3 +1,4 @@
+
 var awkwardWords = [{
     "keyWord":"ok",
     "occurences":"0"
@@ -38,7 +39,7 @@ var awkwardWords = [{
 
 var socket = io();
 var color = prompt("Color");
-var userName = '<span ' + 'style="color:' + color +';"'+ '>'+ prompt("Your Nickname:") + ':' +'</span>';
+var userName = '<span ' + 'style="color:' + color +';"'+ '>'+ prompt("Your Nickname:") + ':</span>';
 var awkwardDetector = '';
 socket.emit('add user', userName);
 $('form').submit(function(){
@@ -46,22 +47,20 @@ $('form').submit(function(){
     $('#m').val('');
     return false;
 });
-socket.on('chat message', function(msg, username){
+socket.on('chat message', function(msg, username) {
     $.parseHTML(userName);
 
-    for(var i=0; i<awkwardWords.length; i++)
-    {
-        if( msg.toLowerCase()===(awkwardWords[i].keyWord).toLowerCase())
-        {
+    for (var i = 0; i < awkwardWords.length; i++) {
+        if (msg.toLowerCase() === (awkwardWords[i].keyWord).toLowerCase()) {
             awkwardDetector = "pretty awkward!";
             awkwardWords[i].occurences++;
             break;
         }
-        else
-        {
-            awkwardDetector="";
+        else {
+            awkwardDetector = "";
         }
     }
-    $('#messages').append($('<h3>').html(msg).prepend(username+' '+ ' '+ awkwardDetector));
-    $("html, body").animate({ scrollTop: $(document).height() }, 10);
-});
+    $('#messages').append($('<h3>').html(msg).prepend(username + ' ' + ' ' + awkwardDetector));
+    $("html, body").animate({scrollTop: $(document).height()}, 10);
+
+}

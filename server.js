@@ -2,6 +2,14 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var azure = require('azure-storage');
+var blobSvc = azure.createBlobService();
+
+blobSvc.createBlockBlobFromLocalFile('awkwardcontainer', 'testblob', 'happy.jpg', function(error, result, response){
+  if(!error){
+     //file uploaded
+  }
+});
 
 app.get('/', function(req, res){	
   res.sendFile(__dirname + '/index.html');
