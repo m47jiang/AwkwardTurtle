@@ -1,1 +1,1 @@
-window.alert(5);
+alert("hello there fam");

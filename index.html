@@ -25,7 +25,7 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-	  var userName = '<h1>'+prompt("Your Nickname:")+'</h1>';
+	  var userName = '<h1>'+ prompt("Your Nickname:")+'</h1>';
       var socket = io();
       $('form').submit(function(){
         socket.emit('chat message', $('#m').val());
@@ -33,7 +33,7 @@
         return false;
       });
       socket.on('chat message', function(msg){
-		$.parseHTML(userName)
+		$.parseHTML(userName);
         $('#messages').append($(userName),$('<li>').text(msg));
       });
     </script>
