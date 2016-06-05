@@ -5,7 +5,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 80;
 var azure = require('azure-storage');
-var blobSvc = azure.createBlobService();
+//var blobSvc = azure.createBlobService();
 
 
 //blobSvc.createBlockBlobFromLocalFile('awkwardcontainer', 'testblob', 'happy.jpg', function(error, result, response){
