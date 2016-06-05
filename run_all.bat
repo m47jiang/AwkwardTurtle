@@ -1,0 +1,5 @@
+@echo off
+set AZURE_STORAGE_ACCOUNT=awkwardturtle
+set AZURE_STORAGE_ACCESS_KEY=yHNrhfx3Lsx7MPttOOuqlH5pqWjxdH/ztJP1QF/Nf6aR7bO1E2eDsTXHw1uF5vDj6D2Be0DNDRwVxcGBygK6Dg==
+
+node server.js
