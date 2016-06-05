@@ -3,7 +3,6 @@
   <head>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	<script src="chatRoom.js"></script>
     <title>Socket.IO chat</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,7 +24,8 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-	  var userName = '<h1>'+ prompt("Your Nickname:")+'</h1>';
+	  var color = prompt("Color");
+	  var userName = '<span ' + 'style="color:' + color +';"'+ '>'+ prompt("Your Nickname:") + ':' +'</span>';
       var socket = io();
       $('form').submit(function(){
         socket.emit('chat message', $('#m').val());
@@ -34,7 +34,7 @@
       });
       socket.on('chat message', function(msg){
 		$.parseHTML(userName);
-        $('#messages').append($(userName),$('<li>').text(msg));
+        $('#messages').append($('<li>').html(msg).prepend(userName+' '));
       });
     </script>
 	

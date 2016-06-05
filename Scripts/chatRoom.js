@@ -1,1 +1,1 @@
-alert("hello there fam");
+alert("Front-End Script Check");
