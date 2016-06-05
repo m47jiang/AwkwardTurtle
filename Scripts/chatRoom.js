@@ -63,4 +63,4 @@ socket.on('chat message', function(msg, username) {
     $('#messages').append($('<h3>').html(msg).prepend(username + ' ' + ' ' + awkwardDetector));
     $("html, body").animate({scrollTop: $(document).height()}, 10);
 
-}
+});
