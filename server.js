@@ -5,14 +5,16 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 443;
 var azure = require('azure-storage');
-//var blobSvc = azure.createBlobService();
+process.env.AZURE_STORAGE_ACCOUNT = "awkwardturtle";
+process.env.AZURE_STORAGE_ACCESS_KEY = "yHNrhfx3Lsx7MPttOOuqlH5pqWjxdH/ztJP1QF/Nf6aR7bO1E2eDsTXHw1uF5vDj6D2Be0DNDRwVxcGBygK6Dg==";
+var blobSvc = azure.createBlobService();
 
 
-//blobSvc.createBlockBlobFromLocalFile('awkwardcontainer', 'testblob', 'happy.jpg', function(error, result, response){
- // if(!error){
+blobSvc.createBlockBlobFromLocalFile('awkwardcontainer', 'testblob', 'happy.jpg', function(error, result, response){
+  if(!error){
   //   //file uploaded
-  //}
-//});
+  }
+});
 
 http.listen(port, function(){
   console.log('listening on *:3000');
