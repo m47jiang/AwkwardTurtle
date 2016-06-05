@@ -82,15 +82,15 @@
 				  document.getElementById("surprise").innerHTML = ("Surprise: " + surprise);
 				  
 				  $(".awks").css("color","black");
-				  if((response[0].scores.anger * 100)+(response[0].scores.happiness * 100)+(response[0].scores.surprise * 100) < 50)
+				  if((response[0].scores.anger * 100)+(response[0].scores.happiness * 100)+(response[0].scores.surprise * 100) < 30)
 				  {
 					$("#nawk").css("color","green");
 				  }
-				  else if((response[0].scores.anger * 100)+(response[0].scores.happiness * 100)+(response[0].scores.surprise * 100) < 100)
+				  else if((response[0].scores.anger * 100)+(response[0].scores.happiness * 100)+(response[0].scores.surprise * 100) < 60)
 				  {
 					$("#alawk").css("color","yellow");
 				  }
-				  else if((response[0].scores.anger * 100)+(response[0].scores.happiness * 100)+(response[0].scores.surprise * 100) < 150)
+				  else if((response[0].scores.anger * 100)+(response[0].scores.happiness * 100)+(response[0].scores.surprise * 100) < 90)
 				  {
 					$("#awk").css("color","orange");
 				  }

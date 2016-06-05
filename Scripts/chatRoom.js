@@ -160,7 +160,7 @@ socket.on('chat message', function(msg, username) {
     messageData2.Inputs.input1.Values[0][3] =  messageData[0].typingStart;
     messageData2.Inputs.input1.Values[0][2] =  messageData[0].timesent - messageData[0].typingStart;
 
-    $('#messages').append($('<h3>').html(msg).prepend(username + ' ' + ' ' + awkwardDetector));
+    $('#messages').append($('<h3>').html(msg).prepend(username + ' ' + ' '));
     $("html, body").animate({scrollTop: $(document).height()}, 10);
     executedTimer = true;
     messagesSent++;
