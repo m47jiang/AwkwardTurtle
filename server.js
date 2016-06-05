@@ -8,11 +8,11 @@ var azure = require('azure-storage');
 var blobSvc = azure.createBlobService();
 
 
-blobSvc.createBlockBlobFromLocalFile('awkwardcontainer', 'testblob', 'happy.jpg', function(error, result, response){
-  if(!error){
-     //file uploaded
-  }
-});
+//blobSvc.createBlockBlobFromLocalFile('awkwardcontainer', 'testblob', 'happy.jpg', function(error, result, response){
+ // if(!error){
+  //   //file uploaded
+  //}
+//});
 
 http.listen(port, function(){
   console.log('listening on *:3000');
