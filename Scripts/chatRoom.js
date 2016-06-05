@@ -50,11 +50,61 @@ var messageData = [
     }
 ];
 
+var messageData2 = {
+    "Inputs": {
+        "input1": {
+            "ColumnNames": [
+                "currentmessagewordcount",
+                "previousmessagewordcount",
+                "interval",
+                "timetotype",
+                "questionmark",
+                "exclamationmark",
+                "ellipses",
+                "period",
+                "keyword",
+                "convolength",
+                "awkwardness"
+            ],
+            "Values": [
+                [
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0"
+                ],
+                [
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0",
+                    "0"
+                ]
+            ]
+        }
+    },
+    "GlobalParameters": {}
+};
+
 var socket = io();
 var color = prompt("What is your favorite color?");
 var userName = '<span ' + 'style="color:' + color +';"'+ '>'+ prompt("Your Nickname:") + ':</span>';
 var awkwardDetector = '';
 var executedTimer = true;
+var messagesSent = 0;
 socket.emit('add user', userName);
 $('form').submit(function(){
     socket.emit('chat message', $('#m').val(), userName);
@@ -87,23 +137,31 @@ socket.on('chat message', function(msg, username) {
         }
     }
 
+    messageData2.Inputs.input1.Values[0][0] = msg.split(" ").length;
+
     if(msg.includes("."))
     {
         messageData[0].period++;
+        messageData2.Inputs.input1.Values[0][7]++;
+
     }
     if(msg.includes("?"))
     {
         messageData[0].question++;
+        messageData2.Inputs.input1.Values[0][4]++;
     }
     if(msg.includes("!"))
     {
         messageData[0].exclimation++;
+        messageData2.Inputs.input1.Values[0][5]++;
     }
-
+    messageData2.Inputs.input1.Values[0][9] = messagesSent;
     messageData[0].timesent =  new Date().getTime().toString();
-    messageData[0].interval =  messageData[0].timesent - messageData[0].typingStart;
+    messageData2.Inputs.input1.Values[0][3] =  messageData[0].typingStart;
+    messageData2.Inputs.input1.Values[0][2] =  messageData[0].timesent - messageData[0].typingStart;
 
-    $('#messages').append($('<h3>').html(msg).prepend(username + ' ' + ' ' + awkwardDetector+ " "+ messageData[0].interval));
+    $('#messages').append($('<h3>').html(msg).prepend(username + ' ' + ' ' + awkwardDetector));
     $("html, body").animate({scrollTop: $(document).height()}, 10);
     executedTimer = true;
+    messagesSent++;
 });

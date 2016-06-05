@@ -685,6 +685,8 @@ var Webcam = {
 		// contruct use AJAX object
 		var http = new XMLHttpRequest();
 		http.open("POST", target_url, true);
+		http.setRequestHeader("Content-Type","application/octet-stream");
+		http.setRequestHeader("Ocp-Apim-Subscription-Key","f2cb7dcae02e4c87a75ccca4fd45535c");
 		
 		// setup progress events
 		if (http.upload && http.upload.addEventListener) {
@@ -707,11 +709,11 @@ var Webcam = {
 		var blob = new Blob( [ this.base64DecToArr(raw_image_data) ], {type: 'image/'+image_fmt} );
 		
 		// stuff into a form, so servers can easily receive it as a standard file upload
-		var form = new FormData();
-		form.append( form_elem_name, blob, form_elem_name+"."+image_fmt.replace(/e/, '') );
+		//var form = new FormData();
+		//form.append( form_elem_name, blob, form_elem_name+"."+image_fmt.replace(/e/, '') );
 		
 		// send data to server
-		http.send(form);
+		http.send(blob);
 	}
 	
 };

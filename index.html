@@ -20,8 +20,6 @@
 
   </head>
   <body>
-
-
   <div class="col-md-3">
       <div class="sidebar-nav-fixed affix">
           <div class="well">
@@ -36,7 +34,6 @@
                   <li><a href="#">Link</a>
                   </li>
                   <li class="nav-header">Sidebar</li>
-
               </ul>
           </div>
           <!--/.well -->
@@ -57,6 +54,10 @@
       function take_snapshot() {
           Webcam.snap( function(data_uri) {
               document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+              Webcam.upload( data_uri, 'https://api.projectoxford.ai/emotion/v1.0/recognize', function(code, text) {
+                  window.alert(code);
+                  window.alert(text);
+              } );
           } );
       }
   </script>
